@@ -1,0 +1,52 @@
+using System;
+
+namespace Prototype
+{
+    public interface Prototype
+    {
+        Prototype Clone();
+    }
+
+    public class BeaverStepa : Prototype
+    {
+        public string Name { get; set; }
+        public string Colour { get; set; }
+        public string Size { get; set; }
+        public Prototype Clone()
+        {
+            return this.MemberwiseClone() as Prototype;
+        }
+    }
+
+    public class BeaverMakar : Prototype
+    {
+        public string Name { get; set; }
+        public string Colour { get; set; }
+        public string Size { get; set; }
+        public Prototype Clone()
+        {
+            return this.MemberwiseClone() as Prototype;
+        }
+    }
+
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            BeaverStepa beaverStepa = new BeaverStepa();
+            beaverStepa.Name = "Stepa";
+            beaverStepa.Colour = "Black";
+            beaverStepa.Size = "Small";
+
+            BeaverStepa beaverStepaClone = (BeaverStepa)beaverStepa.Clone();
+            beaverStepaClone.Name = "Makar";
+
+
+            Console.WriteLine("Name: {0}; Colour: {1}; Size: {2}", beaverStepa.Name, beaverStepa.Colour, beaverStepa.Size);
+
+            Console.WriteLine("Name: {0}; Colour: {1}; Size: {2}", beaverStepaClone.Name, beaverStepaClone.Colour, beaverStepaClone.Size);
+
+            Console.ReadLine();
+        }
+    }
+}
